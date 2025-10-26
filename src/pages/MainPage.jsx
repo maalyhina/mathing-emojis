@@ -1,16 +1,35 @@
-import Grid from "../components/Grid";
+import useEmojiGame from "../hooks/useEmojiGame";
+import EmojiCard from "../components/EmojiCard";
 
 export default function MainPage({ onFinish }) {
+  const { cards, flipCard, moves, time, isFinished } = useEmojiGame("small");
+
   return (
     <div className="page">
-      <h2>Game Started</h2>
-      <p className="lead">Click on a card to see the emoji (matching logic is not implemented yet).</p>
+      <h2>Matching Emojis</h2>
+
       <div className="meta">
-        <div>Level: <strong>Small</strong></div>
-        <div>Moves: <strong>-</strong></div>
+        <div>Рухів: <strong>{moves}</strong></div>
+        <div>Час: <strong>{time}s</strong></div>
       </div>
-      <Grid />
-      <button onClick={onFinish}>Finish Game</button>
+
+      <div className="grid">
+        {cards.map((card, i) => (
+          <div
+            key={i}
+            className={`card ${card.flipped ? "flipped" : ""}`}
+            onClick={() => flipCard(i)}
+          >
+            {card.flipped || card.emojiMatched ? card.emoji : "❓"}
+          </div>
+        ))}
+      </div>
+
+      {isFinished && (
+        <button onClick={onFinish} style={{ marginTop: "20px" }}>
+          Game over!
+        </button>
+      )}
     </div>
   );
 }
