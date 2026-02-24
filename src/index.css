@@ -1,3 +1,112 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg, #fff0f6 0%, #ffe4f1 50%, #ffeef8 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 95%;
+  max-width: 680px;
+  background: white;
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(213, 87, 153, 0.12);
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+h1 { color: #ff4da6; font-size: 2.2rem; margin-bottom: 10px; }
+h2 { color: #d63384; font-size: 1.4rem; margin-bottom: 8px; }
+.lead { color: #555; margin-bottom: 18px; }
+
+.level-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.level-cards .card {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ff85c2, #ff4da6);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 77, 166, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  text-align: center;
+}
+
+.level-cards .card:hover {
+  transform: translateY(-5px) scale(1.07);
+  box-shadow: 0 10px 25px rgba(255, 77, 166, 0.35);
+}
+
+.level-cards .card.active {
+  background: linear-gradient(135deg, #ff4da6, #ff2a8a);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 12px 28px rgba(255, 77, 166, 0.5);
+}
+
+button {
+  padding: 12px 26px;
+  margin-top: 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff4da6, #ff85c2);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 77, 166, 0.12);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+button:hover { transform: translateY(-3px); }
+button:active { transform: translateY(-1px); }
+
+.grid {
+  display: grid;
+  justify-content: center;
+}
+
+.card {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card.flipped {
+  background: #ffd700;
+}
+
+.card:hover { transform: translateY(-6px) scale(1.05); }
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #666;
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -64,5 +173,74 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  animation: pop-in 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Текст */
+.modal h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.modal p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+/* Кнопки */
+.modal-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal-buttons button {
+  background: #ff7b00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-buttons button:hover {
+  background: #ffaa33;
+  transform: scale(1.05);
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
