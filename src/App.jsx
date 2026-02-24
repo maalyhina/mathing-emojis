@@ -4,6 +4,7 @@ import StartPage from "./pages/StartPage";
 import MainPage from "./pages/MainPage";
 import ResultPage from "./pages/ResultPage";
 import Header from "./components/Header";
+import CookiePopup from "./components/CookiePopup";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("start");
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <div className="app-container">
       <Header />
+      <CookiePopup /> 
       {currentPage === "start" && <StartPage onStart={handleStart} />}
       {currentPage === "main" && (
         <MainPage
