@@ -1,40 +1,79 @@
-# Matching Emojis 
+# Matching Emojis
 
-## Опис
-Matching Emojis — це веб-гра на запам’ятовування, створена за допомогою React та Vite.
-Гравець відкриває картки та знаходить пари однакових емодзі.
+## Description
+Matching Emojis is a memory-based web game built using React and Vite.  
+The player flips cards to find matching emoji pairs.
 
-## Технології
+The game includes multiple difficulty levels and tracks player progress.
+
+
+## Technologies
 - React
 - Vite
 - React Hook Form
 - Yup
+- ESLint
 
-## Встановлення
+
+## Installation
+
+Install dependencies:
 
 npm install
 
-## Запуск у режимі розробки
+
+## Run in Development Mode
 
 npm run dev
 
-## Збірка проєкту
+
+## Build the Project
 
 npm run build
 
-## Перегляд production-версії
+
+## Preview Production Version
 
 npm run preview
 
-## Лінтинг
+
+## Linting
 
 npm run lint
 
-## Документація
-Згенерована документація знаходиться у папці /docs.
 
-## Автор
-Малихіна Ангеліна
+## Features
 
-## Ліцензія
-MIT (див. файл LICENSE)
+- Multiple difficulty levels
+- Move counter and timer
+- Restart functionality
+- Form validation using React Hook Form and Yup
+- GDPR-compliant cookie popup
+- Privacy Policy document
+
+
+## GDPR & Cookies
+
+This project includes a cookie consent popup in accordance with GDPR requirements.
+
+Users can:
+- Accept all cookies
+- Customize cookie preferences
+- Refuse optional cookies
+
+Cookie preferences are stored locally in the browser for up to 365 days.
+
+
+## Documentation
+
+Generated documentation is available in the `/docs` folder.
+
+
+## Author
+
+Angelina Malykhina
+
+## License
+
+This project is licensed under the MIT License.  
+See the `LICENSE` file for details.
