@@ -27,18 +27,17 @@ const COOKIE_NAME = "matchingEmojisCookieConsent";
 export default function CookiePopup({ initialConsent }) {
   const [show, setShow] = useState(false);
 
-  /**
-   * Stores user consent preferences.
-   * @type {[CookieConsent, Function]}
-   */
-  const [consent, setConsent] = useState(
-    initialConsent || {
-      necessary: true,
-      analytics: false,
-      marketing: false
-    }
-  );
-
+/**
+ * State for cookie consent.
+ * @type {CookieConsent}
+ */
+const [consent, setConsent] = useState(
+  initialConsent || {
+    necessary: true,
+    analytics: false,
+    marketing: false
+  }
+);
   /**
    * Check for saved consent or show popup
    */
