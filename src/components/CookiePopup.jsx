@@ -8,46 +8,54 @@ import Cookies from "js-cookie";
 const COOKIE_NAME = "matchingEmojisCookieConsent";
 
 /**
+ * @typedef {Object} CookieConsent
+ * @property {boolean} necessary
+ * @property {boolean} analytics
+ * @property {boolean} marketing
+ */
+
+/**
  * CookiePopup Component
  *
  * Displays a GDPR-compliant cookie consent popup.
- * Allows users to:
- * - Accept all cookies
- * - Customize cookie preferences (analytics, marketing)
- * - Save selected preferences
- *
- * Cookie preferences are stored in the browser for 365 days.
  *
  * @component
- * @returns {JSX.Element|null} Cookie consent popup or null if consent already given
+ * @param {Object} props
+ * @param {CookieConsent} [props.initialConsent] - Initial consent for Storybook/testing
+ * @returns {JSX.Element|null}
  */
-export default function CookiePopup() {
+export default function CookiePopup({ initialConsent }) {
   const [show, setShow] = useState(false);
 
-/**
- * Stores user consent state and setter function.
- * @type {{ consent: { necessary: boolean, analytics: boolean, marketing: boolean }, setConsent: Function }}
- */
-const [consent, setConsent] = useState({
-  necessary: true,
-  analytics: false,
-  marketing: false
-});
   /**
-   * Checks for existing cookie consent on component mount.
+   * Stores user consent preferences.
+   * @type {[CookieConsent, Function]}
+   */
+  const [consent, setConsent] = useState(
+    initialConsent || {
+      necessary: true,
+      analytics: false,
+      marketing: false
+    }
+  );
+
+  /**
+   * Check for saved consent or show popup
    */
   useEffect(() => {
+    if (initialConsent) {
+      setShow(true);
+      return;
+    }
+
     const savedConsent = Cookies.get(COOKIE_NAME);
     if (!savedConsent) {
       setShow(true);
     } else {
       setConsent(JSON.parse(savedConsent));
     }
-  }, []);
+  }, [initialConsent]);
 
-  /**
-   * Accepts all cookie categories.
-   */
   const acceptAll = () => {
     const allConsent = { necessary: true, analytics: true, marketing: true };
     Cookies.set(COOKIE_NAME, JSON.stringify(allConsent), { expires: 365 });
@@ -55,19 +63,11 @@ const [consent, setConsent] = useState({
     setShow(false);
   };
 
-  /**
-   * Saves selected cookie preferences.
-   */
   const saveConsent = () => {
     Cookies.set(COOKIE_NAME, JSON.stringify(consent), { expires: 365 });
     setShow(false);
   };
 
-  /**
-   * Toggles a specific cookie category.
-   *
-   * @param {string} category - The cookie category to toggle
-   */
   const toggleCategory = (category) => {
     setConsent(prev => ({ ...prev, [category]: !prev[category] }));
   };

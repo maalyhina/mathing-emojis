@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -31,6 +33,15 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
     "jsdoc": "^4.0.5",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "storybook": "^10.2.12",
+    "@storybook/react-webpack5": "^10.2.12",
+    "@storybook/preset-create-react-app": "^10.2.12",
+    "@storybook/addon-a11y": "^10.2.12",
+    "@storybook/addon-docs": "^10.2.12",
+    "@storybook/addon-onboarding": "^10.2.12",
+    "webpack": "^5.105.2",
+    "prop-types": "^15.8.1",
+    "eslint-plugin-storybook": "^10.2.12"
   }
 }
